@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | Gadeni Stays</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --primary-dark: #3a8a3e;
+            --secondary-color: #81C784;
+            --text-light: #ffffff;
+            --text-dark: #121212;
+            --bg-dark: #111111;
+            --bg-card: #1e1e1e;
+            --accent-color: #FFD700;
+            --border-color: #333333;
+            --overlay-color: rgba(0, 0, 0, 0.7);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .gallery-section {
+            padding: 60px 20px;
+        }
+        
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .gallery-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .gallery-accent {
+            height: 3px;
+            width: 80px;
+            background: var(--primary-color);
+            margin: 0 auto 25px;
+        }
+        
+        .gallery-subtitle {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #b3b3b3;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 0;
+            padding-bottom: 75%; /* 4:3 aspect ratio */
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+        
+        .gallery-item.tall {
+            grid-row: span 2;
+            padding-bottom: calc(150% + 20px); /* 2x height + gap */
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item-title {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-item-subtitle {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .gallery-footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .load-more {
+            padding: 12px 30px;
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .load-more:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        /* Modal styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--overlay-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+        
+        .modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            background-color: var(--bg-dark);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .modal-caption {
+            padding: 20px;
+            background-color: var(--bg-card);
+        }
+        
+        .modal-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal-description {
+            color: #b3b3b3;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .modal-nav:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .modal-prev {
+            left: 15px;
+        }
+        
+        .modal-next {
+            right: 15px;
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .gallery-item.wide {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .gallery-item.tall {
+                grid-row: span 1;
+                padding-bottom: 75%;
+            }
+            
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .gallery-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-header">
+                <h1 class="gallery-title">Explore Our Resort</h1>
+                <div class="gallery-accent"></div>
+                <p class="gallery-subtitle">Discover the beauty and charm of Gadeni Stays through our photo gallery. From stunning landscapes to cozy interiors, experience the essence of our resort.</p>
+            </div>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Accommodations</button>
+                <button class="filter-btn">Views</button>
+                <button class="filter-btn">Dining</button>
+                <button class="filter-btn">Activities</button>
+                <button class="filter-btn">Surroundings</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Featured images (wide/tall) -->
+                <div class="gallery-item wide" data-category="views">
+                    <img src="/api/placeholder/600/400" alt="Mountain view from Gadeni Stays" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Breathtaking Mountain Views</h3>
+                            <p class="gallery-item-subtitle">Panoramic vistas from our property</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item tall" data-category="accommodations">
+                    <img src="/api/placeholder/400/800" alt="A-frame cottage exterior" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">A-Frame Cottage</h3>
+                            <p class="gallery-item-subtitle">Our signature accommodation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="dining">
+                    <img src="/api/placeholder/400/300" alt="Fresh food at Gadeni Stays" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Farm-to-Table Dining</h3>
+                            <p class="gallery-item-subtitle">Delicious homemade meals</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="surroundings">
+                    <img src="/api/placeholder/400/300" alt="Naukuchiatal Lake" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Naukuchiatal Lake</h3>
+                            <p class="gallery-item-subtitle">Just minutes from our resort</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="accommodations">
+                    <img src="/api/placeholder/400/300" alt="Cozy bedroom interior" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Comfortable Bedrooms</h3>
+                            <p class="gallery-item-subtitle">Rest in tranquil comfort</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item tall" data-category="views">
+                    <img src="/api/placeholder/400/800" alt="Misty morning view" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Misty Mornings</h3>
+                            <p class="gallery-item-subtitle">Wake up to nature's beauty</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="/api/placeholder/400/300" alt="Hiking trail near resort" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Hiking Trails</h3>
+                            <p class="gallery-item-subtitle">Explore the surroundings</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="accommodations">
+                    <img src="/api/placeholder/400/300" alt="Cottage bathroom" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Modern Bathrooms</h3>
+                            <p class="gallery-item-subtitle">Clean and well-equipped</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item wide" data-category="views">
+                    <img src="/api/placeholder/600/400" alt="Sunset view from resort" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Magical Sunsets</h3>
+                            <p class="gallery-item-subtitle">End your day with breathtaking colors</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="dining">
+                    <img src="/api/placeholder/400/300" alt="Outdoor dining area" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Outdoor Dining</h3>
+                            <p class="gallery-item-subtitle">Eat with a view</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="/api/placeholder/400/300" alt="Bonfire area" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Evening Bonfires</h3>
+                            <p class="gallery-item-subtitle">Share stories under the stars</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="surroundings">
+                    <img src="/api/placeholder/400/300" alt="Local wildlife" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Local Wildlife</h3>
+                            <p class="gallery-item-subtitle">Connect with nature</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add more items as needed to reach 30 photos -->
+                <div class="gallery-item" data-category="accommodations">
+                    <img src="/api/placeholder/400/300" alt="Cottage living room" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Cozy Living Spaces</h3>
+                            <p class="gallery-item-subtitle">Relax in comfort</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="/api/placeholder/400/300" alt="Bird watching" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Bird Watching</h3>
+                            <p class="gallery-item-subtitle">Spot local avian species</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="views">
+                    <img src="/api/placeholder/400/300" alt="Cloudy mountains" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">Clouds & Mountains</h3>
+                            <p class="gallery-item-subtitle">Nature's ever-changing canvas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-footer">
+                <button class="load-more">Load More Photos</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal for full-size images -->
+    <div class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img src="" alt="" class="modal-image">
+            <div class="modal-caption">
+                <h3 class="modal-title"></h3>
+                <p class="modal-description"></p>
+            </div>
+            <button class="modal-nav modal-prev">&lt;</button>
+            <button class="modal-nav modal-next">&gt;</button>
+        </div>
+    </div>
+    
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const category = button.textContent.toLowerCase();
+                
+                // Show/hide gallery items based on category
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Modal functionality
+        const modal = document.querySelector('.modal');
+        const modalImage = document.querySelector('.modal-image');
+        const modalTitle = document.querySelector('.modal-title');
+        const modalDescription = document.querySelector('.modal-description');
+        const modalClose = document.querySelector('.modal-close');
+        const modalPrev = document.querySelector('.modal-prev');
+        const modalNext = document.querySelector('.modal-next');
+        
+        let currentIndex = 0;
+        const visibleItems = () => Array.from(galleryItems).filter(item => item.style.display !== 'none');
+        
+        // Open modal when clicking on an image
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const title = item.querySelector('.gallery-item-title').textContent;
+                const description = item.querySelector('.gallery-item-subtitle').textContent;
+                
+                modalImage.src = img.src;
+                modalImage.alt = img.alt;
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+                
+                currentIndex = Array.from(visibleItems()).indexOf(item);
+                
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('open');
+            document.body.style.overflow = ''; // Enable scrolling
+        });
+        
+        // Close modal when clicking outside the content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = ''; // Enable scrolling
+            }
+        });
+        
+        // Navigate through images
+        modalPrev.addEventListener('click', () => {
+            const items = visibleItems();
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateModal(items[currentIndex]);
+        });
+        
+        modalNext.addEventListener('click', () => {
+            const items = visibleItems();
+            currentIndex = (currentIndex + 1) % items.length;
+            updateModal(items[currentIndex]);
+        });
+        
+        function updateModal(item) {
+            const img = item.querySelector('img');
+            const title = item.querySelector('.gallery-item-title').textContent;
+            const description = item.querySelector('.gallery-item-subtitle').textContent;
+            
+            modalImage.src = img.src;
+            modalImage.alt = img.alt;
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+        }
+        
+        // Load more functionality (simulated)
+        const loadMoreBtn = document.querySelector('.load-more');
+        let loadCount = 0;
+        
+        loadMoreBtn.addEventListener('click', () => {
+            loadCount++;
+            if (loadCount >= 2) {
+                loadMoreBtn.textContent = 'No More Photos';
+                loadMoreBtn.disabled = true;
+                return;
+            }
+            
+            // Create new gallery items (this would normally load from your server)
+            const newItems = [
+                { category: 'accommodations', image: '/api/placeholder/400/300', title: 'Private Patio', subtitle: 'Enjoy the fresh mountain air' },
+                { category: 'dining', image: '/api/placeholder/400/300', title: 'Breakfast Service', subtitle: 'Start your day with a hearty meal' },
+                { category: 'views', image: '/api/placeholder/400/300', title: 'Starry Night Sky', subtitle: 'Perfect for stargazing' },
+                { category: 'activities', image: '/api/placeholder/400/300', title: 'Yoga Deck', subtitle: 'Find your inner peace' },
+                { category: 'surroundings', image: '/api/placeholder/400/300', title: 'Local Waterfalls', subtitle: 'Natural wonders nearby' },
+                { category: 'accommodations', image: '/api/placeholder/400/300', title: 'Reading Nook', subtitle: 'Cozy corner for relaxation' }
+            ];
+            
+            const galleryGrid = document.querySelector('.gallery-grid');
+            
+            newItems.forEach(item => {
+                const newItem = document.createElement('div');
+                newItem.className = 'gallery-item';
+                newItem.dataset.category = item.category;
+                
+                newItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" />
+                    <div class="gallery-overlay">
+                        <div>
+                            <h3 class="gallery-item-title">${item.title}</h3>
+                            <p class="gallery-item-subtitle">${item.subtitle}</p>
+                        </div>
+                    </div>
+                `;
+                
+                galleryGrid.appendChild(newItem);
+                
+                // Add click event to new item
+                newItem.addEventListener('click', () => {
+                    modalImage.src = item.image;
+                    modalImage.alt = item.title;
+                    modalTitle.textContent = item.title;
+                    modalDescription.textContent = item.subtitle;
+                    
+                    currentIndex = Array.from(visibleItems()).indexOf(newItem);
+                    
+                    modal.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Update filter functionality for new items
+            const allItems = document.querySelectorAll('.gallery-item');
+            const activeCategory = Array.from(filterButtons).find(btn => btn.classList.contains('active')).textContent.toLowerCase();
+            
+            allItems.forEach(item => {
+                if (activeCategory === 'all' || item.dataset.category === activeCategory) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

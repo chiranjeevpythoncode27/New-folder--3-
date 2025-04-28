@@ -6,1180 +6,2014 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- 
-    - primary meta tags
-  -->
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 
-
-    <!-- 
-    - favicon
-  -->
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/svg+xml">
-
-    <!-- 
-    - google font link
-  -->
+    <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
 
-    <!-- 
-    - custom css link
-  -->
+    <!-- custom css link -->
     <link rel="stylesheet" href="assets/style.css">
 
-    <!-- 
-    - preload images
-  -->
+    <!-- preload images -->
+    <link rel="preload" as="image" href="./assets/images/hero-slider-2.jpg">
+    <link rel="preload" as="image" href="./assets/images/hero-slider-3.jpg">
+
+    <style>
+        /* Floating Order Button Styles - LARGER SIZE */
+        
+        .floating-order-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 999;
+        }
+        
+        .order-now-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #ff9f1c 0%, #ffbf69 100%);
+            color: white;
+            padding: 20px 35px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 12px 25px rgba(255, 159, 28, 0.4);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            animation: pulse 2s infinite;
+            font-family: 'DM Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .order-now-btn:hover {
+            background: linear-gradient(135deg, #ffbf69 0%, #ff9f1c 100%);
+            transform: translateY(-7px);
+            box-shadow: 0 20px 40px rgba(255, 159, 28, 0.5);
+        }
+        
+        .order-now-btn:active {
+            transform: translateY(0) scale(0.97);
+        }
+        
+        .order-now-btn ion-icon {
+            font-size: 1.5rem;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 159, 28, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 159, 28, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 159, 28, 0);
+            }
+        }
+        /* For mobile responsiveness */
+        
+        @media (max-width: 768px) {
+            .floating-order-btn {
+                bottom: 25px;
+                right: 25px;
+            }
+            .order-now-btn {
+                padding: 18px 30px;
+                font-size: 1.1rem;
+                gap: 12px;
+            }
+            .order-now-btn ion-icon {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .order-now-btn {
+                padding: 16px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body id="top">
 
-    <!-- 
-    - #PRELOADER
-  -->
-
+    <!-- PRELOADER -->
     <div class="preload" data-preaload>
         <div class="circle"></div>
-        <p class="text">welcome</p>
+        <p class="text">Gadeni Stays</p>
     </div>
 
+    <!-- TOP BAR -->
+   
+      
 
-
-
-
-    <!-- 
-    - #TOP BAR
-  -->
-
-    <div class="topbar">
-        <div class="container">
-
-            <address class="topbar-item">
-        <div class="icon">
-          <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
-        </div>
-
-        <span class="span">
-          Restaurant St, Delicious City, London 9578, UK
-        </span>
-      </address>
-
-            <div class="separator"></div>
-
-            <div class="topbar-item item-2">
-                <div class="icon">
-                    <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
-                </div>
-
-                <span class="span">Daily : 8.00 am to 10.00 pm</span>
-            </div>
-
-            <a href="tel:+11234567890" class="topbar-item link">
-                <div class="icon">
-                    <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
-                </div>
-
-                <span class="span">+1 123 456 7890</span>
-            </a>
-
-            <div class="separator"></div>
-
-            <a href="mailto:booking@restaurant.com" class="topbar-item link">
-                <div class="icon">
-                    <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
-                </div>
-
-                <span class="span">booking@restaurant.com</span>
-            </a>
-
-        </div>
-    </div>
-
-
-
-
-
-    <!-- 
-    - #HEADER
-  -->
-
+    <!-- HEADER -->
     <header class="header" data-header>
         <div class="container">
-
-            <a href="#" class="logo">
-                <img src="images/Screenshot (32) (1).jpg" width="200" height="80" alt="Let Me Dine - Home">
-            </a>
-
+            <h1 style="color: white; font-weight: 400; font-size: 42px; white-space: nowrap;">Gadeni Stays</h1>
             <nav class="navbar" data-navbar>
-
-                <button class="close-btn" aria-label="close menu" data-nav-toggler>
-          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-        </button>
-
-                <a href="#" class="logo">
-                    <img src="./assets/images/logo.svg" width="160" height="50" alt="Grilli - Home">
-                </a>
-
+               
                 <ul class="navbar-list">
-
                     <li class="navbar-item">
                         <a href="#home" class="navbar-link hover-underline active">
                             <div class="separator"></div>
-
                             <span class="span">Home</span>
                         </a>
                     </li>
-
-                    <li class="navbar-item">
-                        <a href="#menu" class="navbar-link hover-underline">
-                            <div class="separator"></div>
-
-                            <span class="span">Menus</span>
-                        </a>
-                    </li>
-
+                   
                     <li class="navbar-item">
                         <a href="#about" class="navbar-link hover-underline">
                             <div class="separator"></div>
-
                             <span class="span">About Us</span>
                         </a>
                     </li>
                     <li class="navbar-item">
-                        <a href="#testimonials" class="navbar-link hover-underline">
-                            <div class="separator"></div>
-
-                            <span class="span">Our Chefs</span>
-                        </a>
-                    </li>
-
-
-                    <li class="navbar-item">
                         <a href="#contacts" class="navbar-link hover-underline">
                             <div class="separator"></div>
-
                             <span class="span">Contact</span>
                         </a>
                     </li>
-
                 </ul>
 
                 <div class="text-center">
                     <p class="headline-1 navbar-title">Visit Us</p>
-
                     <address class="body-4">
-            Restaurant St, Delicious City, <br>
-            London 9578, UK
-          </address>
-
-                    <p class="body-4 navbar-text">Open: 9.30 am - 2.30pm</p>
-
-                    <a href="mailto:booking@grilli.com" class="body-4 sidebar-link">booking@grilli.com</a>
-
+                       Gadeni <br>
+                    </address>
+                   
+                    <a href="New folder (3)\gallery.html" class="body-4 sidebar-link"></a>
                     <div class="separator"></div>
-
                     <p class="contact-label">Booking Request</p>
-
-                    <a href="tel:+88123123456" class="body-1 contact-number hover-underline">
-            +88-123-123456
-          </a>
+                    <a href="tel: +917060984899" class="body-1 contact-number hover-underline">
+                        +917060984899
+                        +919997226512
+                    </a>
                 </div>
-
             </nav>
 
-            <a href="#table" class="btn btn-secondary">
-                <span class="text text-1">Find A Table</span>
 
-                <span class="text text-2" aria-hidden="true">Find A Table</span>
-            </a>
 
-            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-        <span class="line line-1"></span>
-        <span class="line line-2"></span>
-        <span class="line line-3"></span>
-      </button>
 
             <div class="overlay" data-nav-toggler data-overlay></div>
-
         </div>
     </header>
 
-
-
-
-
     <main>
-        <article>
-
-            <!-- 
-        - #HERO
-      -->
-
-            <section class="hero text-center" aria-label="home" id="home">
-
-                <ul class="hero-slider" data-hero-slider>
-
-                    <li class="slider-item active" data-hero-slider-item>
-
-                        <div class="slider-bg">
-                            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1d/8f/b0/02/sweet-shop.jpg?w=1000&h=-1&s=1" width="1880" height="950" alt="" class="img-cover">
-                        </div>
-
-                        <p class="label-2 section-subtitle slider-reveal">Tradational & Hygine</p>
-
-                        <h1 class="display-1 hero-title slider-reveal">
-                            For the love of <br> delicious food
-                        </h1>
-
-                        <p class="body-2 hero-text slider-reveal">
-                            Come with family & feel the joy of mouthwatering food
-                        </p>
-
-
-                    </li>
-
-                    <li class="slider-item" data-hero-slider-item>
-
-                        <div class="slider-bg">
-                            <img src="./assets/images/hero-slider-2.jpg" width="1880" height="950" alt="" class="img-cover">
-                        </div>
-
-                        <p class="label-2 section-subtitle slider-reveal">delightful experience</p>
-
-                        <h1 class="display-1 hero-title slider-reveal">
-                            Flavors Inspired by <br> the Seasons
-                        </h1>
-
-                        <p class="body-2 hero-text slider-reveal">
-                            Come with family & feel the joy of mouthwatering food
-                        </p>
-
-                        <a href="#" class="btn btn-primary slider-reveal">
-                            <span class="text text-1">View Our Menu</span>
-
-
-                            <span class="text text-2" aria-hidden="true">View Our Menu</span>
-                        </a>
-
-                    </li>
-
-                    <li class="slider-item" data-hero-slider-item>
-
-                        <div class="slider-bg">
-                            <img src="./assets/images/hero-slider-3.jpg" width="1880" height="950" alt="" class="img-cover">
-                        </div>
-
-                        <p class="label-2 section-subtitle slider-reveal">amazing & delicious</p>
-
-                        <h1 class="display-1 hero-title slider-reveal">
-                            Where every flavor <br> tells a story
-                        </h1>
-
-                        <p class="body-2 hero-text slider-reveal">
-                            Come with family & feel the joy of mouthwatering food
-                        </p>
-
-                        <a href="#" class="btn btn-primary slider-reveal">
-                            <span class="text text-1">View Our Menu</span>
-
-                            <span class="text text-2" aria-hidden="true">View Our Menu</span>
-
-                            <button class="text text-2" aria-label="open menu" data-nav-toggler>
-                                <span class="line line-1"></span>
-                                <span class="line line-2"></span>
-                                <span class="line line-3"></span>
-                              </button>
-
-                            <div class="overlay" data-nav-toggler data-overlay></div>
-
-
-
-
-
-
-                        </a>
-
-                    </li>
-
-                </ul>
-
-                <button class="slider-btn prev" aria-label="slide to previous" data-prev-btn>
-          <ion-icon name="chevron-back"></ion-icon>
-        </button>
-
-                <button class="slider-btn next" aria-label="slide to next" data-next-btn>
-          <ion-icon name="chevron-forward"></ion-icon>
-        </button>
-
-                <a href="#" class="hero-btn has-after">
-                    <img src="./assets/images/hero-icon.png" width="48" height="48" alt="booking icon">
-
-                    <span class="label-2 text-center span">Book A Table</span>
-                </a>
-
-            </section>
-
-
-
-
-
-            <!-- 
-        - #SERVICE
-      -->
-
-            <section class="section service bg-black-10 text-center" aria-label="service">
-                <div class="container">
-
-                    <p class="section-subtitle label-2">Flavors For Royalty</p>
-
-                    <h2 class="headline-1 section-title">We Offer Top Notch</h2>
-
-                    <p class="section-text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industrys standard dummy text ever.
-                    </p>
-
-                    <ul class="grid-list">
-
-                        <li>
-                            <div class="service-card">
-
-                                <a href="#" class="has-before hover:shine">
-                                    <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                                        <img src="./assets/images/service-1.jpg" width="285" height="336" loading="lazy" alt="Breakfast" class="img-cover">
-                                    </figure>
-                                </a>
-
-                                <div class="card-content">
-
-                                    <h3 class="title-4 card-title">
-                                        <a href="#">Breakfast</a>
-                                    </h3>
-
-                                    <a href="#" class="btn-text hover-underline label-2">View Menu</a>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="service-card">
-
-                                <a href="#" class="has-before hover:shine">
-                                    <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                                        <img src="./assets/images/service-2.jpg" width="285" height="336" loading="lazy" alt="Appetizers" class="img-cover">
-                                    </figure>
-                                </a>
-
-                                <div class="card-content">
-
-                                    <h3 class="title-4 card-title">
-                                        <a href="#">Appetizers</a>
-                                    </h3>
-
-                                    <a href="#" class="btn-text hover-underline label-2">View Menu</a>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="service-card">
-
-                                <a href="#" class="has-before hover:shine">
-                                    <figure class="card-banner img-holder" style="--width: 285; --height: 336;">
-                                        <img src="./assets/images/service-3.jpg" width="285" height="336" loading="lazy" alt="Drinks" class="img-cover">
-                                    </figure>
-                                </a>
-
-                                <div class="card-content">
-
-                                    <h3 class="title-4 card-title">
-                                        <a href="#">Drinks</a>
-                                    </h3>
-
-                                    <a href="#" class="btn-text hover-underline label-2">View Menu</a>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                    </ul>
-
-                    <img src="./assets/images/shape-1.png" width="246" height="412" loading="lazy" alt="shape" class="shape shape-1 move-anim">
-                    <img src="./assets/images/shape-2.png" width="343" height="345" loading="lazy" alt="shape" class="shape shape-2 move-anim">
+        
+        
+      
+        <!-- HERO SECTION -->
+        <section class="hero text-center" aria-label="home" id="home">
+            <!-- WhatsApp & Call Buttons (added here) -->
+          
+        
+            <ul class="hero-slider" data-hero-slider>
+                <div style="position: absolute; top: 20px; right: 20px; z-index: 10; display: flex; gap: 0.8rem; align-items: center; font-family: Arial, sans-serif; margin-bottom: 15px;">
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/917060984899" 
+                       style="display: flex; align-items: center; gap: 0.4rem; text-decoration: none; 
+                              background: #25D366; color: white; padding: 0.5rem 0.9rem; 
+                              border-radius: 50px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+                              font-size: 0.85rem; transition: all 0.2s ease;">
+                        <ion-icon name="logo-whatsapp" style="font-size: 1rem;"></ion-icon>
+                        <span>WhatsApp</span>
+                    </a>
+                
+                    <!-- Call Button -->
+                    <a href="tel:+919997226512" 
+   style="display: flex; align-items: center; gap: 0.4rem; text-decoration: none; 
+          background: #4285F4; color: white; padding: 0.5rem 0.9rem; 
+          border-radius: 50px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+          font-size: 0.85rem; transition: all 0.2s ease;">
+  📞
+  <span>Call Now</span>
+</a>
 
                 </div>
-            </section>
+                
+                <style>
+                    /* Hover effects */
+                    a[href^="https://wa.me"]:hover {
+                        background: #1fa855 !important;
+                        transform: translateY(-1px);
+                        box-shadow: 0 3px 8px rgba(0,0,0,0.3) !important;
+                    }
+                    a[href^="tel:"]:hover {
+                        background: #3a7ae8 !important;
+                        transform: translateY(-1px);
+                        box-shadow: 0 3px 8px rgba(0,0,0,0.3) !important;
+                    }
+                </style>
+                <li class="slider-item active" data-hero-slider-item>
+                    <div class="slider-bg">
+                        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/2916ed35-0309-422b-89f2-fff813f1c546.jpeg?im_w=1440" width="1880" height="950" alt="" class="img-cover">
+                    </div>
+                   
+                    <h1 class="display-1 hero-title slider-reveal">
+                        Where Every Stay  <br> Tells a Story
+                    </h1>
+                    <p class="body-2 hero-text slider-reveal">
+                        Come with family & feel the joy of Gadeni 
+                    </p>
+                    <a href="./gallery.html" target="_blank" class="btn btn-primary slider-reveal">
+                        <span class="text text-1">Gallery</span>
+                        <span class="text text-2" aria-hidden="true">Gallery </span>
+                    </a>
+                </li>
+        
+                <li class="slider-item" data-hero-slider-item>
+                    <div class="slider-bg">
+                        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/52d1a7a9-1367-4a7b-bdc5-327288580fff.jpeg?im_w=1200" width="1880" height="950" alt="" class="img-cover">
+                    </div>
+                    <p class="label-2 section-subtitle slider-reveal" 
+                    style="font-size: 1.5rem;
+                           font-weight: 1500;
+                           background: linear-gradient(to right, #6b4b2e, #8b5a2b, #6b4b2e);
+                           -webkit-background-clip: text;
+                           background-clip: text;
+                           color: transparent;
+                           text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+                           letter-spacing: 1.5px;
+                           text-transform: uppercase;
+                           display: inline-block;
+                           padding: 0 15px;
+                           margin: 1rem 0;">
+                    delightful experience
+                 </p>
+                    <h1 class="display-1 hero-title slider-reveal">
+                        Flavors Inspired by <br> the Seasons
+                    </h1>
+                    <p class="body-2 hero-text slider-reveal">
+                        Come with family & feel the joy of Gadeni 
+                    </p>
+                    <a href="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/0af8f52c-7a13-4406-90df-8e18dea13ad3.jpeg?im_w=1440" target="_blank" class="btn btn-primary slider-reveal">
+                        <span class="text text-1">Gallery</span>
+                        <span class="text text-2" aria-hidden="true">Gallery</span>
+                    </a>
+                </li>
+        
+                <li class="slider-item" data-hero-slider-item>
+                    <div class="slider-bg">
+                        <img src="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/0af8f52c-7a13-4406-90df-8e18dea13ad3.jpeg?im_w=1440" width="1880" height="950" alt="" class="img-cover">
+                    </div>
+                    <p class="label-2 section-subtitle slider-reveal" 
+                    style="font-size: 1.5rem;
+                           font-weight: 3500;
+                           background: linear-gradient(to right, #6b4b2e, #8b5a2b, #6b4b2e);
+                           -webkit-background-clip: text;
+                           background-clip: text;
+                           color: transparent;
+                           text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+                           letter-spacing: 1.5px;
+                           text-transform: uppercase;
+                           display: inline-block;
+                           padding: 0 15px;
+                           margin: 1rem 0;">
+                    delightful experience
+                    <h1 class="display-1 hero-title slider-reveal">
+                        Flavors Inspired by <br> the Seasons
+                    </h1>
+                    <p class="body-2 hero-text slider-reveal">
+                        Come with family & feel the joy of mouthwatering food
+                    </p>
+                    <a href="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/0af8f52c-7a13-4406-90df-8e18dea13ad3.jpeg?im_w=1440" target="_blank" class="btn btn-primary slider-reveal">
+                        <span class="text text-1">Gallery</span>
+                        <span class="text text-2" aria-hidden="true">Gallery </span>
+                    </a>
+                </li>
+            </ul>
+        
+            <button class="slider-btn prev" aria-label="slide to previous" data-prev-btn>
+                <ion-icon name="chevron-back"></ion-icon>
+            </button>
+        
+            <button class="slider-btn next" aria-label="slide to next" data-next-btn>
+                <ion-icon name="chevron-forward"></ion-icon>
+            </button>
+        </section>
+    <!-- ROOMS SECTION WITH BLACK BACKGROUND -->
+<section class="section rooms text-center" aria-label="rooms" style="background-color: #000; padding: 100px 0;">
+    <div class="container">
+    
+    <p class="section-subtitle label-2" style="color: #fff;">Luxurious Accommodations</p>
+    
+    <h2 class="headline-1 section-title" style="font-size: 25px; color: #fff;">Our 7 Signature Room Types</h2>
+    
+    <p class="section-text" style="font-size: 20px; color: rgba(255,255,255,0.8);">
+       Gadeni Stays offers exquisite accommodations blending traditional elegance with modern comfort. 
+       Each room type is designed to provide a unique experience for our discerning guests.
+    </p>
+    
+    <div class="rooms-grid">
+    
+    <!-- Ionicons script (make sure it's in your head) -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
+   <!-- Room 1 -->
+   <div class="room-card">
+       <div class="room-media">
+           <figure class="room-banner img-holder" style="--width: 380; --height: 440;">
+               <img src="https://a0.muscache.com/im/pictures/miso/Hosting-1301911537976253713/original/3a7ad78f-ae26-4e10-af62-b1b546308d3a.jpeg?im_w=1440" width="380" height="440" loading="lazy" 
+                    alt="Watch Tower " class="img-cover">
+             
+           </figure>
+       </div>
+       <div class="room-content">
+           <h3 class="title-3 room-title">Watch Tower</h3>
+           <p class="room-desc">
+            Two-floor luxury retreat: Ground floor features a serene jakuzzi, while the upper floor offers a double bedroom with attached bathroom. Both levels boast breathtaking views of Chota Kailash and the Great Valley's majestic ambiance.
+           </p>
+           
+           <a href="tel:9997226512" class="btn btn-primary">
+               <span class="text text-1">Book Now</span>
+               <span class="text text-2" aria-hidden="true">Book Now</span>
+           </a>
+       </div>
+   </div>
+
+   <!-- Room 2 -->
+   <div class="room-card">
+       <div class="room-media">
+           <figure class="room-banner img-holder" style="--width: 380; --height: 440;">
+               <img src="https://a0.muscache.com/im/pictures/3c471b79-3483-4205-ae76-f4baea9451c4.jpg?im_w=1440" width="380" height="440" loading="lazy" 
+                    alt="Hybrid A Frame" class="img-cover">
+           </figure>
+       </div>
+       <div class="room-content">
+           <h3 class="title-3 room-title">Hybrid A Frame</h3>
+           <p class="room-desc">
+            Two-story Hybrid A-Frame: Soak in the alfresco jacuzzi below, retreat to a plush double bedroom above. Floor-to-ceiling windows showcase Chota Kailash and the valley’s dramatic expanse at every turn.
+           </p>
+           
+           <a href="tel:9997226512" class="btn btn-primary">
+               <span class="text text-1">Book Now</span>
+               <span class="text text-2" aria-hidden="true">Book Now</span>
+           </a>
+       </div>
+   </div>
+
+   <!-- Room 3 -->
+   <div class="room-card">
+       <div class="room-media">
+           <figure class="room-banner img-holder" style="--width: 380; --height: 440;">
+               <img src="https://a0.muscache.com/im/pictures/miso/Hosting-805000320485419560/original/dc789b22-7ff2-401a-8672-f9887eba1091.jpeg?im_w=1200" width="380" height="440" loading="lazy" 
+                    alt="Glamping Dome" class="img-cover">
+           </figure>
+       </div>
+       <div class="room-content">
+           <h3 class="title-3 room-title">Glamping Dome</h3>
+           <p class="room-desc">
+            Glamping Dome Delight: Choose between cozy bunk beds or a plush double bed, both with a stylish sitting area. Immerse in nature's embrace with stunning views and magical ambiance under the stars
+           </p>
+           
+           <a href="tel:9997226512" class="btn btn-primary">
+               <span class="text text-1">Book Now</span>
+               <span class="text text-2" aria-hidden="true">Book Now</span>
+           </a>
+       </div>
+   </div>
+
+   <!-- Room 4 -->
+   <div class="room-card">
+       <div class="room-media">
+           <figure class="room-banner img-holder" style="--width: 380; --height: 440;">
+               <img src="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/52d1a7a9-1367-4a7b-bdc5-327288580fff.jpeg?im_w=1200" width="380" height="440" loading="lazy" 
+                    alt="A Frame Cottage" class="img-cover">
+           </figure>
+       </div>
+       <div class="room-content">
+           <h3 class="title-3 room-title">A Frame Cottage</h3>
+           <p class="room-desc">
+            A-Frame Cottage Charm: Nestled in nature with a storybook exterior, this cozy retreat blends rustic charm with modern comforts—your perfect home away from home beneath towering pines and starlit skies.
+           </p>
+           
+           <a href="tel:9997226512" class="btn btn-primary">
+               <span class="text text-1">Book Now</span>
+               <span class="text text-2" aria-hidden="true">Book Now</span>
+           </a>
+       </div>
+   </div>
+
+   <!-- Room 5 -->
+   <div class="room-card">
+       <div class="room-media">
+           <figure class="room-banner img-holder" style="--width: 380; --height: 440;">
+               <img src="https://a0.muscache.com/im/pictures/4a693116-7072-430e-b05a-13089f5fbdab.jpg?im_w=1200" width="380" height="440" loading="lazy" 
+                    alt="Sky Cabin" class="img-cover">
+            
+           </figure>
+       </div>
+       <div class="room-content">
+           <h3 class="title-3 room-title">Sky Cabin</h3>
+           <p class="room-desc">
+            Sky Cabin – Perched 35 feet high, this tiny house blends minimalist design with big views. A compact marvel featuring a lofted bed, panoramic windows, and a vertigo-inducing balcony overlooking endless horizons.
+           </p>
+           
+           <a href="tel:9997226512" class="btn btn-primary">
+               <span class="text text-1">Book Now</span>
+               <span class="text text-2" aria-hidden="true">Book Now</span>
+           </a>
+       </div>
+   </div>
+
+   <!-- Room 6 -->
+   <div class="room-card">
+       <div class="room-media">
+           <figure class="https://a0.muscache.com/im/pictures/hosting/Hosting-1096318490761307999/original/12d05fde-5111-4b46-a3b0-13f9f5d8dee5.jpeg?im_w=1200" style="--width: 380; --height: 440;">
+               <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1096318490761307999/original/5d380a31-287d-4ef9-858b-221f17e0a989.jpeg?im_w=1440" width="380" height="440" loading="lazy" 
+                    alt="Cocoon House" class="img-cover">
+           </figure>
+       </div>
+       <div class="room-content">
+           <h3 class="title-3 room-title">Cocoon House</h3>
+           <p class="room-desc">
+            Cocoon House – A snug sanctuary with a plush double bed and attached spa-style bathroom. Curved walls wrapped in warm wood create an intimate, nest-like vibe for ultimate relaxation
+           </p>
+         
+           <a href="tel:9997226512" class="btn btn-primary">
+               <span class="text text-1">Book Now</span>
+               <span class="text text-2" aria-hidden="true">Book Now</span>
+           </a>
+       </div>
+   </div>
+
+   <!-- Room 7 -->
+   <div class="room-card">
+       <div class="room-media">
+           <figure class="room-banner img-holder" style="--width: 380; --height: 440;">
+               <img src="https://a0.muscache.com/im/pictures/miso/Hosting-588213596491309216/original/1d267401-bac7-4029-aa74-47d304183d70.jpeg?im_w=1440" width="380" height="440" loading="lazy" 
+                    alt="A Frame Cabin " class="img-cover">
+              
+           </figure>
+       </div>
+       <div class="room-content">
+           <h3 class="title-3 room-title">A Frame Cabin </h3>
+           <p class="room-desc">
+            A-Frame Cabin – A rustic-chic retreat with a double bed + bunk beds, attached washroom, and warm wooden interiors. Perfect for families or friends craving mountain views and cozy cabin vibes.
+           </p>
+           
+           <a href="tel:9997226512" class="btn btn-primary">
+               <span class="text text-1">Book Now</span>
+               <span class="text text-2" aria-hidden="true">Book Now</span>
+           </a>
+       </div>
+   </div>
+
+</div>
+
+<img src="./assets/images/shape-1.png" width="246" height="412" loading="lazy" alt="shape" class="shape shape-1 move-anim">
+<img src="./assets/images/shape-2.png" width="343" height="345" loading="lazy" alt="shape" class="shape shape-2 move-anim">
+
+</div>
+</section>
+
+<!-- Updated CSS Styles -->
+<style>
+.rooms {
+    position: relative;
+    padding: 100px 0;
+    color: white;
+    background-color: #000;
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.room-card {
+    background: #111;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #333;
+}
+
+.room-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255,255,255,0.2);
+}
+
+.room-media {
+    position: relative;
+}
+
+.room-banner {
+    aspect-ratio: 380/440;
+    overflow: hidden;
+}
+
+.room-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #f5af19, #f12711);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.room-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-title {
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 22px;
+}
+
+.room-desc {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex-grow: 1;
+    font-size: 15px;
+}
+
+.room-features {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.room-features span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+}
+
+.room-features ion-icon {
+    font-size: 16px;
+    color: #f5af19;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #f5af19, #f12711);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #f12711, #f5af19);
+}
+
+@media (max-width: 768px) {
+    .rooms {
+        padding: 60px 0;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 30px;
+    }
+}
+</style>
 
 
-
-
-
-            <!-- 
+    <!-- 
         - #ABOUT
       -->
 
-            <section class="section about text-center" aria-labelledby="about-label" id="about">
-                <div class="container">
+    <section class="section about text-center" aria-labelledby="about-label" id="about">
+        <div class="container">
 
-                    <div class="about-content">
+            <div class="about-content">
 
-                        <p class="label-2 section-subtitle" id="about-label">Our Story</p>
+                <p class="label-2 section-subtitle" id="about-label" style="font-size: 20px;">Our Story</p>
+            
+                <h1 class="headline-1 section-title" style="font-size: 36px;">Every Stay Tells a Story</h1>
+            
+                <p class="section-text" style="font-size: 16px; color: white;">
+                    Nestled by Naukuchiatal Lake, Gadeni offers premium cottages with private balconies and stunning Himalayan views. Perfect for romantic getaways and family vacations.
+                </p>
+            
+                <div class="contact-label" style="font-size: 20px; margin-top: 20px;">Book Through Call</div>
+            
+                <a href="tel:+91 9997226512" class="body-1 contact-number hover-underline" style="font-size: 22px; display: inline-block; margin-top: 10px; color: white;">
+                    +91 9997226512
+                </a>
+                <a href="tel:+91 9868734324" class="body-1 contact-number hover-underline" style="font-size: 22px; display: inline-block; margin-top: 10px; color: white;">
+                    +91 9868734324
+                </a>
+            </div>
+            
 
-                        <h2 class="headline-1 section-title">Every Fla vor Tells a Story</h2>
+            <figure class="about-banner">
 
-                        <p class="section-text">
-                            Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the industrys standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make a type specimen book It has survived
-                            not only five centuries, but also the leap into.
-                        </p>
+                <img src="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/b52238ed-b691-4fd7-b391-9532a6ed4003.jpeg?im_w=1440" width="570" height="570" loading="lazy" alt="about banner" class="w-100" data-parallax-item data-parallax-speed="1">
 
-                        <div class="contact-label">Book Through Call</div>
-
-                        <a href="tel:+804001234567" class="body-1 contact-number hover-underline">+80 (400) 123 4567</a>
-
-                        <a href="#" class="btn btn-primary">
-                            <span class="text text-1">Read More</span>
-
-                            <span class="text text-2" aria-hidden="true">Read More</span>
-                        </a>
-
-                    </div>
-
-                    <figure class="about-banner">
-
-                        <img src="./assets/images/about-banner.jpg" width="570" height="570" loading="lazy" alt="about banner" class="w-100" data-parallax-item data-parallax-speed="1">
-
-                        <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
-                            <img src="./assets/images/about-abs-image.jpg" width="285" height="285" loading="lazy" alt="" class="w-100">
-                        </div>
-
-                        <div class="abs-img abs-img-2 has-before">
-                            <img src="./assets/images/badge-2.png" width="133" height="134" loading="lazy" alt="">
-                        </div>
-
-                    </figure>
-
-                    <img src="./assets/images/shape-3.png" width="197" height="194" loading="lazy" alt="" class="shape">
-
+                <div class="abs-img abs-img-1 has-before" data-parallax-item data-parallax-speed="1.75">
+                    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/0bb6d27d-dd22-4e3b-8cba-9b7fd6690ba1.jpeg?im_w=1440" width="285" height="285" loading="lazy" alt="" class="w-100">
                 </div>
-            </section>
+
+
+
+            </figure>
+
+            <img src="./assets/images/shape-3.png" width="197" height="194" loading="lazy" alt="" class="shape">
+
+        </div>
+    </section>
 
 
 
 
 
-            <!-- 
+    <!-- 
         - #SPECIAL DISH
       -->
 
-            <section class="special-dish text-center" aria-labelledby="dish-label">
+    <section class="special-dish text-center" aria-labelledby="dish-label" id="Chefs">
 
-                <div class="special-dish-banner">
-                    <img src="./assets/images/special-dish-banner.jpg" width="940" height="900" loading="lazy" alt="special dish" class="img-cover">
-                </div>
+        <div class="special-dish-banner">
+            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-573833227607639148/original/01aac284-c9cf-41c7-b61c-981dff4eac55.jpeg?im_w=720" width="940" height="900" loading="lazy" alt="special dish" class="img-cover">
+        </div>
 
-                <div class="special-dish-content bg-black-10">
-                    <div class="container">
+        <div class="special-dish-content bg-black-10">
+            <div class="container">
 
-                        <img src="./assets/images/badge-1.png" width="28" height="41" loading="lazy" alt="badge" class="abs-img">
+              
 
-                        <p class="section-subtitle label-2">Special Dish</p>
+                <p style="color: white; font-size: 16px;" class="section-text">
 
-                        <h2 class="headline-1 section-title">Lobster Tortellini</h2>
+                    ​Gadeni Stays offers unique accommodations in Naukuchiatal, Uttarakhand, featuring options like Sky Cabins, Glamping Domes, and A-frame cottages. These stays provide serene mountain views, cozy interiors, and a tranquil escape into nature
+                </p>
 
-                        <p class="section-text">
-                            Lorem Ipsum is simply dummy text of the printingand typesetting industry lorem Ipsum has been the industrys standard dummy text ever since the when an unknown printer took a galley of type.
-                        </p>
-
-                        <div class="wrapper">
-                            <del class="del body-3">$40.00</del>
-
-                            <span class="span body-1">$20.00</span>
-                        </div>
-
-                        <a href="#" class="btn btn-primary">
-                            <span class="text text-1">View All Menu</span>
-
-                            <span class="text text-2" aria-hidden="true">View All Menu</span>
-                        </a>
-
-                    </div>
-                </div>
-
-                <img src="./assets/images/shape-4.png" width="179" height="359" loading="lazy" alt="" class="shape shape-1">
-
-                <img src="./assets/images/shape-9.png" width="351" height="462" loading="lazy" alt="" class="shape shape-2">
-
-            </section>
-
-
-
-
-
-            <!-- 
-        - #MENU
-      -->
-
-            <section class="section menu" aria-label="menu-label" id="menu">
-                <div class="container">
-
-                    <p class="section-subtitle text-center label-2">Special Selection</p>
-
-                    <h2 class="headline-1 section-title text-center">Delicious Menu</h2>
-
-                    <ul class="grid-list">
-
-                        <li>
-                            <div class="menu-card hover:card">
-
-                                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                                    <img src="./assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad" class="img-cover">
-                                </figure>
-
-                                <div>
-
-                                    <div class="title-wrapper">
-                                        <h3 class="title-3">
-                                            <a href="#" class="card-title">Greek Salad</a>
-                                        </h3>
-
-                                        <span class="badge label-1">Seasonal</span>
-
-                                        <span class="span title-2">$25.50</span>
-                                    </div>
-
-                                    <p class="card-text label-1">
-                                        Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.
-                                    </p>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="menu-card hover:card">
-
-                                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                                    <img src="./assets/images/menu-2.png" width="100" height="100" loading="lazy" alt="Lasagne" class="img-cover">
-                                </figure>
-
-                                <div>
-
-                                    <div class="title-wrapper">
-                                        <h3 class="title-3">
-                                            <a href="#" class="card-title">Lasagne</a>
-                                        </h3>
-
-                                        <span class="span title-2">$40.00</span>
-                                    </div>
-
-                                    <p class="card-text label-1">
-                                        Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices
-                                    </p>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="menu-card hover:card">
-
-                                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                                    <img src="./assets/images/menu-3.png" width="100" height="100" loading="lazy" alt="Butternut Pumpkin" class="img-cover">
-                                </figure>
-
-                                <div>
-
-                                    <div class="title-wrapper">
-                                        <h3 class="title-3">
-                                            <a href="#" class="card-title">Butternut Pumpkin</a>
-                                        </h3>
-
-                                        <span class="span title-2">$10.00</span>
-                                    </div>
-
-                                    <p class="card-text label-1">
-                                        Typesetting industry lorem Lorem Ipsum is simply dummy text of the priand.
-                                    </p>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="menu-card hover:card">
-
-                                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                                    <img src="./assets/images/menu-4.png" width="100" height="100" loading="lazy" alt="Tokusen Wagyu" class="img-cover">
-                                </figure>
-
-                                <div>
-
-                                    <div class="title-wrapper">
-                                        <h3 class="title-3">
-                                            <a href="#" class="card-title">Tokusen Wagyu</a>
-                                        </h3>
-
-                                        <span class="badge label-1">New</span>
-
-                                        <span class="span title-2">$39.00</span>
-                                    </div>
-
-                                    <p class="card-text label-1">
-                                        Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices.
-                                    </p>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="menu-card hover:card">
-
-                                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                                    <img src="./assets/images/menu-5.png" width="100" height="100" loading="lazy" alt="Olivas Rellenas" class="img-cover">
-                                </figure>
-
-                                <div>
-
-                                    <div class="title-wrapper">
-                                        <h3 class="title-3">
-                                            <a href="#" class="card-title">Olivas Rellenas</a>
-                                        </h3>
-
-                                        <span class="span title-2">$25.00</span>
-                                    </div>
-
-                                    <p class="card-text label-1">
-                                        Avocados with crab meat, red onion, crab salad stuffed red bell pepper and green bell pepper.
-                                    </p>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="menu-card hover:card">
-
-                                <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
-                                    <img src="./assets/images/menu-6.png" width="100" height="100" loading="lazy" alt="Opu Fish" class="img-cover">
-                                </figure>
-
-                                <div>
-
-                                    <div class="title-wrapper">
-                                        <h3 class="title-3">
-                                            <a href="#" class="card-title">Opu Fish</a>
-                                        </h3>
-
-                                        <span class="span title-2">$49.00</span>
-                                    </div>
-
-                                    <p class="card-text label-1">
-                                        Vegetables, cheeses, ground meats, tomato sauce, seasonings and spices
-                                    </p>
-
-                                </div>
-
-                            </div>
-                        </li>
-
-                    </ul>
-
-                    <p class="menu-text text-center">
-                        During winter daily from <span class="span">7:00 pm</span> to <span class="span">9:00 pm</span>
-                    </p>
-
-                    <a href="#" class="btn btn-primary">
-                        <span class="text text-1">View All Menu</span>
-
-                        <span class="text text-2" aria-hidden="true">View All Menu</span>
-                    </a>
-
-                    <img src="./assets/images/shape-5.png" width="921" height="1036" loading="lazy" alt="shape" class="shape shape-2 move-anim">
-                    <img src="./assets/images/shape-6.png" width="343" height="345" loading="lazy" alt="shape" class="shape shape-3 move-anim">
-
-                </div>
-            </section>
-
-
-
-
-
-            <!-- 
-        - #TESTIMONIALS
-      -->
-
-            <section class="section testi text-center has-bg-image" style="background-image: url('./assets/images/testimonial-bg.jpg')" aria-label="testimonials" id="testimonials">
-                <div class=" container ">
-
-                    <div class="quote ">”</div>
-
-                    <p class="headline-2 testi-text ">
-                        I wanted to thank you for inviting me down for that amazing dinner the other night. The food was extraordinary.
-                    </p>
-
-                    <div class="wrapper ">
-                        <div class="separator "></div>
-                        <div class="separator "></div>
-                        <div class="separator "></div>
-                    </div>
-
-                    <div class="profile ">
-                        <img src="./assets/images/testi-avatar.jpg " width="100 " height="100 " loading="lazy " alt="Sam Jhonson " class="img ">
-
-                        <p class="label-2 profile-name ">Sam Jhonson</p>
-                    </div>
-
-                </div>
-            </section>
-
-
-
-
-
-            <!-- 
-        - #RESERVATION
-      -->
-
-            <section class="reservation " id="table">
-                <div class="container ">
-
-                    <div class="form reservation-form bg-black-10 ">
-
-                        <form action=" " class="form-left ">
-
-                            <h2 class="headline-1 text-center ">Online Reservation</h2>
-
-                            <p class="form-text text-center ">
-                                Booking request <a href="tel:+88123123456 " class="link ">+88-123-123456</a> or fill out the order form
-                            </p>
-
-                            <div class="input-wrapper ">
-                                <input type="text " name="name " placeholder="Your Name " autocomplete="off " class="input-field ">
-
-                                <input type="tel " name="phone " placeholder="Phone Number " autocomplete="off " class="input-field ">
-                            </div>
-
-                            <div class="input-wrapper ">
-
-                                <div class="icon-wrapper ">
-                                    <ion-icon name="person-outline " aria-hidden="true "></ion-icon>
-
-                                    <select name="person " class="input-field ">
-                    <option value="1-person ">1 Person</option>
-                    <option value="2-person ">2 Person</option>
-                    <option value="3-person ">3 Person</option>
-                    <option value="4-person ">4 Person</option>
-                    <option value="5-person ">5 Person</option>
-                    <option value="6-person ">6 Person</option>
-                    <option value="7-person ">7 Person</option>
-                  </select>
-
-                                    <ion-icon name="chevron-down " aria-hidden="true "></ion-icon id="table">
-                                </div>
-
-                                <div class="icon-wrapper ">
-                                    <ion-icon name="calendar-clear-outline " aria-hidden="true "></ion-icon>
-
-                                    <input type="date " name="reservation-date " class="input-field ">
-
-                                    <ion-icon name="chevron-down " aria-hidden="true "></ion-icon>
-                                </div>
-
-                                <div class="icon-wrapper ">
-                                    <ion-icon name="time-outline " aria-hidden="true "></ion-icon>
-
-                                    <select name="person " class="input-field ">
-                    <option value="08:00am ">08 : 00 am</option>
-                    <option value="09:00am ">09 : 00 am</option>
-                    <option value="010:00am ">10 : 00 am</option>
-                    <option value="011:00am ">11 : 00 am</option>
-                    <option value="012:00am ">12 : 00 am</option>
-                    <option value="01:00pm ">01 : 00 pm</option>
-                    <option value="02:00pm ">02 : 00 pm</option>
-                    <option value="03:00pm ">03 : 00 pm</option>
-                    <option value="04:00pm ">04 : 00 pm</option>
-                    <option value="05:00pm ">05 : 00 pm</option>
-                    <option value="06:00pm ">06 : 00 pm</option>
-                    <option value="07:00pm ">07 : 00 pm</option>
-                    <option value="08:00pm ">08 : 00 pm</option>
-                    <option value="09:00pm ">09 : 00 pm</option>
-                    <option value="10:00pm ">10 : 00 pm</option>
-                  </select>
-
-                                    <ion-icon name="chevron-down " aria-hidden="true "></ion-icon>
-                                </div>
-
-                            </div>
-
-                            <textarea name="message " placeholder="Message " autocomplete="off " class="input-field "></textarea>
-
-                            <button type="submit " class="btn btn-secondary ">
-                <span class="text text-1 ">Book A Table</span>
-
-                <span class="text text-2 " aria-hidden="true ">Book A Table</span>
-              </button>
-
-                        </form>
-
-                        <div class="form-right text-center " style="background-image: url( './assets/images/form-pattern.png') ">
-
-                            <h2 class="headline-1 text-center ">Contact Us</h2>
-
-                            <p class="contact-label ">Booking Request</p>
-
-                            <a href="tel:+88123123456 " class="body-1 contact-number hover-underline ">+88-123-123456</a>
-
-                            <div class="separator "></div>
-
-                            <p class="contact-label ">Location</p>
-
-                            <address class="body-4 ">
-                Restaurant St, Delicious City, <br>
-                London 9578, UK
-              </address>
-
-                            <p class="contact-label ">Lunch Time</p>
-
-                            <p class="body-4 ">
-                                Monday to Sunday <br> 11.00 am - 2.30pm
-                            </p>
-
-                            <p class="contact-label ">Dinner Time</p>
-
-                            <p class="body-4 ">
-                                Monday to Sunday <br> 05.00 pm - 10.00pm
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
-
-
-
-
-
-            <!-- 
-        - #FEATURES
-      -->
-
-            <section class="section features text-center " aria-label="features ">
-                <div class="container ">
-
-                    <p class="section-subtitle label-2 ">Why Choose Us</p>
-
-                    <h2 class="headline-1 section-title ">Our Strength</h2>
-
-                    <ul class="grid-list ">
-
-                        <li class="feature-item ">
-                            <div class="feature-card ">
-
-                                <div class="card-icon ">
-                                    <img src="./assets/images/features-icon-1.png " width="100 " height="80 " loading="lazy " alt="icon ">
-                                </div>
-
-                                <h3 class="title-2 card-title ">Hygienic Food</h3>
-
-                                <p class="label-1 card-text ">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-                            </div>
-                        </li>
-
-                        <li class="feature-item ">
-                            <div class="feature-card ">
-
-                                <div class="card-icon ">
-                                    <img src="./assets/images/features-icon-2.png " width="100 " height="80 " loading="lazy " alt="icon ">
-                                </div>
-
-                                <h3 class="title-2 card-title ">Fresh Environment</h3>
-
-                                <p class="label-1 card-text ">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-                            </div>
-                        </li>
-
-                        <li class="feature-item ">
-                            <div class="feature-card ">
-
-                                <div class="card-icon ">
-                                    <img src="./assets/images/features-icon-3.png " width="100 " height="80 " loading="lazy " alt="icon ">
-                                </div>
-
-                                <h3 class="title-2 card-title ">Skilled Chefs</h3>
-
-                                <p class="label-1 card-text ">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-                            </div>
-                        </li>
-
-                        <li class="feature-item ">
-                            <div class="feature-card ">
-
-                                <div class="card-icon ">
-                                    <img src="./assets/images/features-icon-4.png " width="100 " height="80 " loading="lazy " alt="icon ">
-                                </div>
-
-                                <h3 class="title-2 card-title ">Event & Party</h3>
-
-                                <p class="label-1 card-text ">Lorem Ipsum is simply dummy printing and typesetting.</p>
-
-                            </div>
-                        </li>
-
-                    </ul>
-
-                    <img src="./assets/images/shape-7.png " width="208 " height="178 " loading="lazy " alt="shape " class="shape shape-1 ">
-
-                    <img src="./assets/images/shape-8.png " width="120 " height="115 " loading="lazy " alt="shape " class="shape shape-2 ">
-
-                </div>
-            </section>
-
-
-
-
-
-            <!-- 
-        - #EVENT
-      -->
-
-            <section class="section event bg-black-10 " aria-label="event ">
-                <div class="container ">
-
-                    <p class="section-subtitle label-2 text-center ">Recent Updates</p>
-
-                    <h2 class="section-title headline-1 text-center ">Upcoming Event</h2>
-
-                    <ul class="grid-list ">
-
-                        <li>
-                            <div class="event-card has-before hover:shine ">
-
-                                <div class="card-banner img-holder " style="--width: 350; --height: 450; ">
-                                    <img src="./assets/images/event-1.jpg " width="350 " height="450 " loading="lazy " alt="Flavour so good you’ll try to eat with your eyes. " class="img-cover ">
-
-                                    <time class="publish-date label-2 " datetime="2022-09-15 ">15/09/2022</time>
-                                </div>
-
-                                <div class="card-content ">
-                                    <p class="card-subtitle label-2 text-center ">Food, Flavour</p>
-
-                                    <h3 class="card-title title-2 text-center ">
-                                        Flavour so good you’ll try to eat with your eyes.
-                                    </h3>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="event-card has-before hover:shine ">
-
-                                <div class="card-banner img-holder " style="--width: 350; --height: 450; ">
-                                    <img src="./assets/images/event-2.jpg " width="350 " height="450 " loading="lazy " alt="Flavour so good you’ll try to eat with your eyes. " class="img-cover ">
-
-                                    <time class="publish-date label-2 " datetime="2022-09-08 ">08/09/2022</time>
-                                </div>
-
-                                <div class="card-content ">
-                                    <p class="card-subtitle label-2 text-center ">Healthy Food</p>
-
-                                    <h3 class="card-title title-2 text-center ">
-                                        Flavour so good you’ll try to eat with your eyes.
-                                    </h3>
-                                </div>
-
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="event-card has-before hover:shine ">
-
-                                <div class="card-banner img-holder " style="--width: 350; --height: 450; ">
-                                    <img src="./assets/images/event-3.jpg " width="350 " height="450 " loading="lazy " alt="Flavour so good you’ll try to eat with your eyes. " class="img-cover ">
-
-                                    <time class="publish-date label-2 " datetime="2022-09-03 ">03/09/2022</time>
-                                </div>
-
-                                <div class="card-content ">
-                                    <p class="card-subtitle label-2 text-center ">Recipie</p>
-
-                                    <h3 class="card-title title-2 text-center ">
-                                        Flavour so good you’ll try to eat with your eyes.
-                                    </h3>
-                                </div>
-
-                            </div>
-                        </li>
-
-                    </ul>
-
-                    <a href="# " class="btn btn-primary ">
-                        <span class="text text-1 ">View Our Blog</span>
-
-                        <span class="text text-2 " aria-hidden="true ">View Our Blog</span>
-                    </a>
-
-                </div>
-            </section>
-
-        </article>
-    </main>
-
-
-
-
-
-    <!-- 
-    - #FOOTER
-  -->
-
-    <footer class="footer section has-bg-image text-center " style="background-image: url( './assets/images/https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/bc/cf/cf/a-view-of-the-front.jpg?w=1000&h=-1&s=1') " id="contacts">
-        <div class="container ">
-
-            <div class="footer-top grid-list ">
-
-                <div class="footer-brand has-before has-after ">
-
-
-
-                    <address class="body-4 ">
-            Restaurant St, Delicious City, London 9578, UK
-          </address>
-
-                    <a href="mailto:booking@grilli.com " class="body-4 contact-link ">booking@grilli.com</a>
-
-                    <a href="tel:+88123123456 " class="body-4 contact-link ">Booking Request : +88-123-123456</a>
-
-                    <p class="body-4 ">
-                        Open : 09:00 am - 01:00 pm
-                    </p>
-
-                    <div class="wrapper ">
-                        <div class="separator "></div>
-                        <div class="separator "></div>
-                        <div class="separator "></div>
-                    </div>
-
-                    <p class="title-1 ">Get News & Offers</p>
-
-                    <p class="label-1 ">
-                        Subscribe us & Get <span class="span ">25% Off.</span>
-                    </p>
-
-                    <form action=" " class="input-wrapper ">
-                        <div class="icon-wrapper ">
-                            <ion-icon name="mail-outline " aria-hidden="true "></ion-icon>
-
-                            <input type="email " name="email_address " placeholder="Your email " autocomplete="off " class="input-field ">
-                        </div>
-
-                        <button type="submit " class="btn btn-secondary ">
-              <span class="text text-1 ">Subscribe</span>
-
-              <span class="text text-2 " aria-hidden="true ">Subscribe</span>
-            </button>
-                    </form>
-
-                </div>
-
-                <ul class="footer-list ">
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Home</a>
-                    </li>
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Menus</a>
-                    </li>
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">About Us</a>
-                    </li>
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Our Chefs</a>
-                    </li>
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Contact</a>
-                    </li>
-
-                </ul>
-
-                <ul class="footer-list ">
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Facebook</a>
-                    </li>
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Instagram</a>
-                    </li>
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Twitter</a>
-                    </li>
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Youtube</a>
-                    </li>
-
-                    <li>
-                        <a href="# " class="label-2 footer-link hover-underline ">Google Map</a>
-                    </li>
-
-                </ul>
+              
 
             </div>
 
+            <a href="" target="_blank" class="btn btn-primary slider-reveal">
+                <span class="text text-1">Gallery</span>
+                <span class="text text-2" aria-hidden="true">Gallery</span>
+            </a>
 
 
         </div>
-    </footer>
+        </div>
+
+      
 
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant - Reservation</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --black-10: rgba(0, 0, 0, 0.1);
+            --black-30: rgba(0, 0, 0, 0.3);
+            --primary: #ff9f1c;
+            --text-dark: #333;
+            --text-light: #fff;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Typography */
+        .headline-1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .headline-2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .title-2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .body-1 {
+            font-size: 1.1rem;
+        }
+        
+        .body-4 {
+            font-size: 1rem;
+        }
+        
+        .label-1 {
+            font-size: 0.9rem;
+        }
+        
+        .label-2 {
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-title {
+            margin-bottom: 40px;
+        }
+        
+        .section-subtitle {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 159, 28, 0.4);
+        }
+        
+        /* Reservation Section */
+        .reservation-form {
+            display: flex;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-left, .form-right {
+            flex: 1;
+            padding: 50px;
+        }
+        
+        .form-left {
+            background-color: white;
+        }
+        
+        .form-right {
+            background-color: var(--black-10);
+            background-image: url('./assets/images/form-pattern.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-dark);
+        }
+        
+        .form-text {
+            margin-bottom: 30px;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            margin: 25px 0 10px;
+            color: var(--primary);
+        }
+        
+        .contact-number {
+            display: block;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .separator {
+            width: 50px;
+            height: 2px;
+            background-color: var(--black-30);
+            margin: 25px auto;
+        }
+        
+        /* Features Section */
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-image: url('./assets/images/footer-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 80px 0 40px;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand {
+            text-align: left;
+        }
+        
+        .footer-list {
+            list-style: none;
+        }
+        
+        .footer-link {
+            display: block;
+            padding: 8px 0;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .hover-underline:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-link {
+            display: block;
+            margin: 10px 0;
+            color: var(--text-light);
+        }
+        
+        /* Simple Footer */
+        .simple-footer {
+            background-color: #222;
+            color: #aaa;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 159, 28, 0.3);
+            font-size: 0.9rem;
+        }
+        
+        /* Back to Top */
+        .back-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .back-top-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .headline-1 {
+                font-size: 2.4rem;
+            }
+            
+            .headline-2 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .reservation-form {
+                flex-direction: column;
+            }
+            
+            .form-left, .form-right {
+                padding: 40px 30px;
+            }
+            
+            .headline-1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .headline-1 {
+                font-size: 1.8rem;
+            }
+            
+            .headline-2 {
+                font-size: 1.5rem;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+            
+            .form-left, .form-right {
+                padding: 30px 20px;
+            }
+            
+            .grid-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- RESERVATION>
 
-
-
-    <!-- 
-    - #BACK TO TOP
-  -->
-
-    <a href="#top " class="back-top-btn active " aria-label="back to top " data-back-top-btn>
-        <ion-icon name="chevron-up " aria-hidden="true "></ion-icon>
-    </a>
-
-
-
-
-
-    <!-- 
-    - custom js link
-  -->
-    <script src="assets/script.js "></script>
-
-    <!-- 
-    - ionicon link
-  -->
-    <script type="module " src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js "></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js "></script>
-
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Testimonials | Gadeni Stays</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --primary-text: #ffffff;
+            --secondary-text: #b3b3b3;
+            --accent: #4CAF50;
+            --highlight: #81C784;
+            --star-color: #FFD700;
+            --border-color: #333333;
+        }
+        
+        body {
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            color: var(--secondary-text);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .accent-bar {
+            height: 3px;
+            width: 80px;
+            background: var(--accent);
+            margin: 0 auto 30px;
+        }
+        
+        .rating-summary {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 60px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .overall-rating {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            color: var(--primary-text);
+        }
+        
+        .stars {
+            font-size: 1.8rem;
+            color: var(--star-color);
+            margin-bottom: 15px;
+        }
+        
+        .review-count {
+            font-size: 1.1rem;
+            color: var(--secondary-text);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .guest-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .guest-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .guest-name-date {
+            flex-grow: 1;
+        }
+        
+        .guest-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .guest-time {
+            color: var(--secondary-text);
+            font-size: 0.85rem;
+        }
+        
+        .guest-rating {
+            font-size: 1rem;
+            color: var(--star-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .rating-number {
+            margin-left: 5px;
+            color: var(--primary-text);
+        }
+        
+        .review-text {
+            color: var(--secondary-text);
+            line-height: 1.7;
+            margin-bottom: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+        }
+        
+        .expanded .review-text {
+            -webkit-line-clamp: unset;
+        }
+        
+        .read-more {
+            color: var(--highlight);
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .response {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .response-header {
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .featured-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--secondary-text);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Guest Experiences</h1>
+            <div class="accent-bar"></div>
+            <p class="subtitle">Discover what makes Gadeni Stays special through the eyes of our guests. 
+            Authentic stories from travelers who have experienced our unique hideaway nestled in nature.</p>
+        </header>
+        
+        <div class="rating-summary">
+            <div class="overall-rating">4.8</div>
+            <div class="stars">★★★★★</div>
+            <div class="review-count">Based on 25+ verified guest reviews</div>
+        </div>
+        
+        <div class="category-filters">
+            <button class="filter-btn active">All Reviews</button>
+            <button class="filter-btn">5 Star</button>
+            <button class="filter-btn">Service</button>
+            <button class="filter-btn">Location</button>
+            <button class="filter-btn">Food</button>
+        </div>
+        
+        <div class="testimonial-grid">
+            <!-- Featured Review -->
+           
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.read-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.testimonial-card');
+                card.classList.toggle('expanded');
+                this.textContent = card.classList.contains('expanded') ? 'Read less' : 'Read more';
+            });
+        });
+        
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                // Filter functionality would be implemented here
+            });
+        });
+    </script>
 </body>
 
+<!-- Testimonials Section Start -->
+<section class="testimonials-section">
+    <div class="testimonials-container">
+      <div class="testimonials-header">
+        <h2>Guest Experiences</h2>
+        <div class="accent-bar"></div>
+        <p class="subtitle">Discover what makes Gadeni Stays special through the eyes of our guests</p>
+      </div>
+      
+      <div class="rating-summary">
+        <div class="overall-rating">4.8</div>
+        <div class="stars">★★★★★</div>
+        <div class="review-count">Based on 25+ verified guest reviews</div>
+      </div>
+      
+      <div class="category-filters">
+        <button class="filter-btn active">All Reviews</button>
+        <button class="filter-btn">5 Star</button>
+        <button class="filter-btn">Service</button>
+        <button class="filter-btn">Location</button>
+        <button class="filter-btn">Food</button>
+      </div>
+      
+      <div class="testimonial-grid">
+        <!-- Featured Review -->
+        <div class="testimonial-card">
+          <div class="featured-tag">Featured</div>
+          <div class="guest-info">
+            <div class="guest-avatar">S</div>
+            <div class="guest-name-date">
+              <div class="guest-name">Saurav</div>
+              <div class="guest-time">September 2024</div>
+            </div>
+            <div class="guest-rating">
+              ★★★★★ <span class="rating-number">5.0</span>
+            </div>
+          </div>
+          <p class="review-text">I am not sure what to write and describe my beautiful experience at this property. First of all, I would love to thank Pankaj and Rakesh who were so helpful, polite, and caring. They help me with almost everything and took care of my friends whenever they wanted something. I'm so happy that I booked this place, the ambience, the surrounding, the vibe, the peace, the food which we got while staying at this property, I would like to give hundred star for all the beautiful experience which I had at this stay.</p>
+          <span class="read-more">Read more</span>
+        </div>
+        
+        <!-- Regular Reviews -->
+        <div class="testimonial-card">
+          <div class="guest-info">
+            <div class="guest-avatar">K</div>
+            <div class="guest-name-date">
+              <div class="guest-name">Krishnamurthy</div>
+              <div class="guest-time">May 2024</div>
+            </div>
+            <div class="guest-rating">
+              ★★★★★ <span class="rating-number">5.0</span>
+            </div>
+          </div>
+          <p class="review-text">One of the best places I have come across in recent times. The staff is good no doubt however even the location, cleanliness and ambience is top notch. All adventure activities are within 2 kms including the lakes. Multiple options for food even for non veg lovers. View is another plus... just the perfect place with friends and family.</p>
+          <span class="read-more">Read more</span>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="guest-info">
+            <div class="guest-avatar">A</div>
+            <div class="guest-name-date">
+              <div class="guest-name">Asra</div>
+              <div class="guest-time">July 2023</div>
+            </div>
+            <div class="guest-rating">
+              ★★★★★ <span class="rating-number">5.0</span>
+            </div>
+          </div>
+          <p class="review-text">The location of the property was inexplicably beautiful. The view from the room was breathtaking. It had us awestruck when we reached the place. The staff (especially Neeraj bhaiya and Ravi bhaiya) were extremely friendly, helpful and kind. They were on their toes for us the whole time. The food was good too, it felt homely.</p>
+          <span class="read-more">Read more</span>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="guest-info">
+            <div class="guest-avatar">S</div>
+            <div class="guest-name-date">
+              <div class="guest-name">Shakti</div>
+              <div class="guest-time">September 2023</div>
+            </div>
+            <div class="guest-rating">
+              ★★★★★ <span class="rating-number">5.0</span>
+            </div>
+          </div>
+          <p class="review-text">I had a wonderful stay at this property. The location is amazing, surrounded by green hills and clouds. The staff is very friendly and helpful, always ready to assist with anything. Would highly recommend this place to anyone looking for relaxing and enjoyable getaway.</p>
+          <span class="read-more">Read more</span>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="guest-info">
+            <div class="guest-avatar">A</div>
+            <div class="guest-name-date">
+              <div class="guest-name">Aman</div>
+              <div class="guest-time">March 2023</div>
+            </div>
+            <div class="guest-rating">
+              ★★★★★ <span class="rating-number">5.0</span>
+            </div>
+          </div>
+          <p class="review-text">It was a great stay. The care taker Rohit was great and super responsive and helpful. Their food was great too and helped accommodate needs for the toddler we were traveling with. Can't highlight enough on how good the experience was. Will definitely be back.</p>
+          <span class="read-more">Read more</span>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="guest-info">
+            <div class="guest-avatar">N</div>
+            <div class="guest-name-date">
+              <div class="guest-name">Nishant</div>
+              <div class="guest-time">April 2023</div>
+            </div>
+            <div class="guest-rating">
+              ★★★★☆ <span class="rating-number">4.0</span>
+            </div>
+          </div>
+          <p class="review-text">Property was good. Its location was amazing. Food was freshly prepared and felt homey. There was no issue of parking. Overall, our stay was comfortable. I would love to stay again to this property.</p>
+          <span class="read-more">Read more</span>
+        </div>
+      </div>
+      
+      <div class="testimonials-footer">
+        <button class="view-all-btn">View All Reviews</button>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    /* Testimonials Section Styles */
+    .testimonials-section {
+      background-color: #121212;
+      color: #ffffff;
+      padding: 60px 0;
+    }
+    
+    .testimonials-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .testimonials-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    
+    .accent-bar {
+      height: 3px;
+      width: 80px;
+      background: #4CAF50;
+      margin: 0 auto 20px;
+    }
+    
+    .subtitle {
+      color: #b3b3b3;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .rating-summary {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      margin-bottom: 40px;
+      border: 1px solid #333333;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .overall-rating {
+      font-size: 3rem;
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+    
+    .stars {
+      font-size: 1.5rem;
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+    
+    .review-count {
+      font-size: 1rem;
+      color: #b3b3b3;
+    }
+    
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 8px 16px;
+      background-color: #121212;
+      border: 1px solid #333333;
+      color: #b3b3b3;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background-color: #4CAF50;
+      color: white;
+      border-color: #4CAF50;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+    }
+    
+    .testimonial-card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #333333;
+      position: relative;
+      min-height: 200px;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .guest-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .guest-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #4CAF50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .guest-name-date {
+      flex-grow: 1;
+    }
+    
+    .guest-name {
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    
+    .guest-time {
+      color: #b3b3b3;
+      font-size: 0.85rem;
+    }
+    
+    .guest-rating {
+      font-size: 0.9rem;
+      color: #FFD700;
+      display: flex;
+      align-items: center;
+    }
+    
+    .rating-number {
+      margin-left: 5px;
+      color: #ffffff;
+    }
+    
+    .review-text {
+      color: #b3b3b3;
+      line-height: 1.6;
+      margin-bottom: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
+    
+    .expanded .review-text {
+      -webkit-line-clamp: unset;
+    }
+    
+    .read-more {
+      color: #81C784;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    
+    .featured-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    
+    .testimonials-footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .view-all-btn {
+      background-color: transparent;
+      color: #4CAF50;
+      border: 2px solid #4CAF50;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .view-all-btn:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .testimonials-header h2 {
+        font-size: 2rem;
+      }
+      
+      .category-filters {
+        gap: 10px;
+      }
+      
+      .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  
+  <script>
+    // Add this JavaScript to your existing scripts or in a script tag
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.read-more').forEach(button => {
+        button.addEventListener('click', function() {
+          const card = this.closest('.testimonial-card');
+          card.classList.toggle('expanded');
+          this.textContent = card.classList.contains('expanded') ? 'Read less' : 'Read more';
+        });
+      });
+      
+      document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+          });
+          this.classList.add('active');
+          // Filter functionality would be implemented here
+        });
+      });
+    });
+  </script>
+  <!-- Testimonials Section End --> 
+    <!-- FEATURES SECTION -->
+    <section class="section features text-center" aria-label="features">
+        <div class="container">
+            <p class="section-subtitle label-2">Why Choose Us</p>
+            <h2 class="headline-1 section-title">Our Strength</h2>
+            <ul class="grid-list">
+                <li class="feature-item">
+                    <div class="feature-card">
+                        <div class="card-icon">
+                            <img src="./assets/images/features-icon-1.png" width="100" height="80" loading="lazy" alt="icon">
+                        </div>
+                        <h3 class="title-2 card-title">Hygienic Food</h3>
+                     
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-card">
+                        <div class="card-icon">
+                            <img src="./assets/images/features-icon-2.png" width="100" height="80" loading="lazy" alt="icon">
+                        </div>
+                        <h3 class="title-2 card-title">Fresh Environment</h3>
+                      
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-card">
+                        <div class="card-icon">
+                            <img src="./assets/images/features-icon-3.png" width="100" height="80" loading="lazy" alt="icon">
+                        </div>
+                        <h3 class="title-2 card-title">Skilled Chefs</h3>
+                       
+                    </div>
+                </li>
+                <li class="feature-item">
+                    <div class="feature-card">
+                        <div class="card-icon">
+                            <img src="./assets/images/features-icon-4.png" width="100" height="80" loading="lazy" alt="icon">
+                        </div>
+                        <h3 class="title-2 card-title">Celebration
+                     
+                    </div>
+                </li>
+            </ul>
+            <img src="./assets/images/shape-7.png" width="208" height="178" loading="lazy" alt="shape" class="shape shape-1">
+            <img src="./assets/images/shape-8.png" width="120" height="115" loading="lazy" alt="shape" class="shape shape-2">
+        </div>
+    </section>
+
+    <footer class="footer section has-bg-image text-center" style="background-image: url('./assets/images/footer-bg.jpg')" id="Contacts">
+        <div class="container">
+            <div class="footer-top grid-list">
+                <div class="footer-brand has-before has-after">
+                    <h3 class="brand-title">Gadeni Stays</h3>
+                    <address class="body-4">Your Home Away From Home</address>
+                    <a href="mailto:info@gadenistays.com" class="body-4 contact-link">info@gadenistays.com</a>
+                    <a href="tel:+917060984899" class="body-4 contact-link">Booking: +91 7060 984 899</a>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/gadenistays/?hl=en" aria-label="Instagram" class="social-icon">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                        <a href="https://www.facebook.com/gadenistays" aria-label="Facebook" class="social-icon">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a href="https://wa.me/917060984899" aria-label="WhatsApp" class="social-icon">
+                            <ion-icon name="logo-whatsapp"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h4 class="footer-list-title">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="#" class="label-2 footer-link hover-underline">Home</a></li>
+                        <li><a href="#" class="label-2 footer-link hover-underline">About Us</a></li>
+                        <li><a href="#" class="label-2 footer-link hover-underline">Testimonials</a></li>
+                        <li><a href="#" class="label-2 footer-link hover-underline">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-connect">
+                    <h4 class="footer-list-title">Connect With Us</h4>
+                    <ul class="footer-list">
+                        <li><a href="https://www.instagram.com/gadenistays/?hl=en" class="label-2 footer-link hover-underline">
+                            <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon> @gadenistays
+                        </a></li>
+                        <li><a href="https://www.instagram.com/gadeni_homestays/?hl=en" class="label-2 footer-link hover-underline">
+                            <ion-icon name="logo-instagram" aria-hidden="true"></ion-icon> @gadeni_homestays
+                        </a></li>
+                        <li><a href="https://www.google.co.in/maps/place/Gadeni+Homestay/@29.3227158,79.5897243,759m/data=!3m1!1e3!4m9!3m8!1s0x39a0971e60f6b9cd:0x443fe2abd70f25f5!5m2!4m1!1i2!8m2!3d29.3227158!4d79.5922992!16s%2Fg%2F11t17r1tqw?entry=ttu" class="label-2 footer-link hover-underline">
+                            <ion-icon name="location" aria-hidden="true"></ion-icon> Find Us on Google Maps
+                        </a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-newsletter">
+                    <h4 class="footer-list-title">Subscribe to Our Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" required class="input-field">
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <div class="separator"></div>
+                <p class="copyright">&copy; 2025 Gadeni Stays. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <a href="#top" class="back-top-btn active" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+    </a>
+    
+    <style>
+    /* Footer Styles */
+    .footer {
+        padding: 80px 0 30px;
+        position: relative;
+        color: #fff;
+    }
+    
+    .footer-top {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+        text-align: left;
+    }
+    
+    .footer-brand {
+        position: relative;
+        padding-bottom: 20px;
+    }
+    
+    .brand-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #fff;
+    }
+    
+    .footer-brand .has-before,
+    .footer-brand .has-after {
+        z-index: -1;
+    }
+    
+    .contact-link {
+        display: block;
+        margin-top: 8px;
+        transition: color 0.3s ease;
+    }
+    
+    .contact-link:hover {
+        color: #f9bf29;
+    }
+    
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .social-icon {
+        background: rgba(255, 255, 255, 0.1);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+        background: #f9bf29;
+        transform: translateY(-3px);
+    }
+    
+    .footer-list-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #f9bf29;
+    }
+    
+    .footer-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .footer-link {
+        position: relative;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .hover-underline:hover {
+        color: #f9bf29;
+    }
+    
+    .hover-underline::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #f9bf29;
+        transition: width 0.3s ease;
+    }
+    
+    .hover-underline:hover::after {
+        width: 100%;
+    }
+    
+    .newsletter-form {
+        display: flex;
+        margin-top: 15px;
+    }
+    
+    .input-field {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 15px;
+        border-radius: 4px 0 0 4px;
+        color: #fff;
+        width: 100%;
+    }
+    
+    .btn {
+        background: #f9bf29;
+        color: #111;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
+    
+    .btn:hover {
+        background: #e0aa1e;
+    }
+    
+    .separator {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+    }
+    
+    .copyright {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+    }
+    
+    .back-top-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #f9bf29;
+        color: #111;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+    
+    .back-top-btn.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .back-top-btn:hover {
+        background: #e0aa1e;
+    }
+    
+    @media (max-width: 768px) {
+        .footer-top {
+            grid-template-columns: 1fr;
+        }
+        
+        .newsletter-form {
+            flex-direction: column;
+        }
+        
+        .input-field {
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .btn {
+            border-radius: 4px;
+        }
+    }
+    </style>
+
+    <div class="simple-footer">
+        <div class="container">
+            <p>&copy; 2025 Aliado. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <a href="#top" class="back-top-btn active" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+    </a>
+
+    <script src="assets/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
 </html>
